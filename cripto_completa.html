@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="cripto_completa.css">
+  <title>Criptografia de Texto</title>
+  
+</head>
+<body>
+  <div class="texto">
+    <div class="caixa">
+      <textarea id="input" class="input-caixa" placeholder="Digite o texto a ser criptografado"></textarea>
+      <button class="button" onclick="criptografar()">Criptografar</button>
+    </div>
+    <div class="caixa">
+      <textarea id="output" class="output-caixa" placeholder="Texto criptografado"></textarea>
+      <button class="button" onclick="descriptografar()">Descriptografar</button>
+    </div>
+  </div>
+  <div class="imagemcripto">
+    <h1><img src="imagem_cripto.jpg" ></h1>
+  </div>
+  
+
+  <script>
+    function criptografar() {
+      var inputText = document.getElementById("input").value;
+      var outputText = "";
+
+      for (var i = 0; i < inputText.length; i++) {
+        var charCode = inputText.charCodeAt(i);
+        // Adicione o valor do deslocamento para criptografar
+        var encryptedCharCode = charCode + 1;
+        outputText += String.fromCharCode(encryptedCharCode);
+      }
+
+      document.getElementById("output").value = outputText;
+    }
+
+    function descriptografar() {
+      var inputText = document.getElementById("output").value;
+      var outputText = "";
+
+      for (var i = 0; i < inputText.length; i++) {
+        var charCode = inputText.charCodeAt(i);
+        // Subtraia o valor do deslocamento para descriptografar
+        var decryptedCharCode = charCode - 1;
+        outputText += String.fromCharCode(decryptedCharCode);
+      }
+
+      document.getElementById("input").value = outputText;
+    }
+  </script>
+</body>
+</html>
